@@ -7,9 +7,9 @@
  - The inventory system comprises multiple classes: An inventory Actor component, an Inventory GIS subsystem, an inventory Interface, and the Inventory Mapping data asset.
 
 # Setting up the inventory system
- - Every actor holding an inventory should implement the **GCInventoryInterface** interface class and have a **GCInventoryActorComponent** as a component for the actor.
- - All the items used in the game should be defined in a data asset that inherits from **UGCInventoryMappingDataAsset**. Here there are two possible maps. One defines all the items in the game separated by categories and the other map holds the recipes for the items that you wish to craft.
- - The ItemsCategoryMap in the **UGCInventoryMappingDataAsset** is a map that holds the reference to all the items in the game. They're separated by category so you can separate your items in different categories for easier management. Each category holds a data table that could be any struct that inherits from **FTableRowBase**. So it should be generic enough for it to be used with any kind of information you need.
+ - Every actor holding an inventory should implement the **ISInventoryInterface** interface class and have a **ISInventoryActorComponent** as a component for the actor.
+ - All the items used in the game should be defined in a data asset that inherits from **UISInventoryMappingDataAsset**. Here there are two possible maps. One defines all the items in the game separated by categories and the other map holds the recipes for the items that you wish to craft.
+ - The ItemsCategoryMap in the **UISInventoryMappingDataAsset** is a map that holds the reference to all the items in the game. They're separated by category so you can separate your items in different categories for easier management. Each category holds a data table that could be any struct that inherits from **FTableRowBase**. So it should be generic enough for it to be used with any kind of information you need.
  - The only restriction for the data table that holds the item's information is the row name. **The row name should be the gameplay tag used to identify the item.**
  - To set up your inventory data asset you must go to project settings in the editor. Go to Plugins/InventorySystem/ and there set the data asset file.
 # Inventory Actor Component
@@ -20,7 +20,7 @@
 - This component has some delegates for the following events: OnItemGranted, OnItemUsed, and OnItemRemoved. Use them if needed.
 
 # Inventory Interface
-- The **GCInventoryInterface** class should be implemented in the actor that holds the inventory component. The reason is that this class possesses some methods to extend the functionality of the inventory as needed.
+- The **ISInventoryInterface** class should be implemented in the actor that holds the inventory component. The reason is that this class possesses some methods to extend the functionality of the inventory as needed.
 
 # Inventory GIS Subsystem
 - This is the class in charge of fetching all the data of your items and store the data assets that you defined.
@@ -29,7 +29,7 @@
 
 # Crafting teaser
 - There's a little bit of logic for a crafting system in this plugin. It is really basic, and again use it at your own risk.
-- In the **UGCInventoryMappingDataAsset** there's a map called **ItemsCategoryCraftingRecipes**. Similar to the other map. Here you can separate all the recipes by category.
+- In the **UISInventoryMappingDataAsset** there's a map called **ItemsCategoryCraftingRecipes**. Similar to the other map. Here you can separate all the recipes by category.
   ```
   TMap<FGameplayTag, FItemRecipeInfo> ItemsCategoryCraftingRecipes;
   ```
@@ -42,7 +42,7 @@
   TMap<FGameplayTag, float> RecipeElements;
   ```
 - Each element of this map is the items and quantity of them needed to craft an item.
-- Finally, once you defined all your recipes, you can execute the method **CraftItem** in the **GCInventoryActorComponent**. This method will take as input an item tag, and it'll check if you possess the required items for the recipe. And if you do, the materials will be removed from your inventory and the crafted item will be added to your inventory.
+- Finally, once you defined all your recipes, you can execute the method **CraftItem** in the **ISInventoryActorComponent**. This method will take as input an item tag, and it'll check if you possess the required items for the recipe. And if you do, the materials will be removed from your inventory and the crafted item will be added to your inventory.
 
 That's all for now. I hope it works for you all and good luck.
 PD. If this crashes your game, you were warned in the beginning 
