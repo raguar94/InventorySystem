@@ -1,4 +1,4 @@
-# GCInventorySystem
+# InventorySystem
  A generic inventory system that supports replication. It's an experimental plugin use it at your own risk.
 
 # Important notes:
