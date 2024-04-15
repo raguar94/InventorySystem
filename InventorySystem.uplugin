@@ -1,0 +1,34 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "1.0",
+    "FriendlyName": "InventorySystem",
+    "Description": "A genereic inventory system that supports multiplayer",
+    "Category": "Other",
+    "CreatedBy": "Raguar94",
+    "CreatedByURL": "",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "CanContainContent": true,
+    "IsBetaVersion": false,
+    "IsExperimentalVersion": false,
+    "Installed": false,
+    "Modules": [
+        {
+            "Name": "InventorySystem",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ],
+    "Plugins": [
+        {
+            "Name": "ModularGameplay",
+            "Enabled": true
+        },
+        {
+            "Name": "StructUtils",
+            "Enabled": true
+        }
+    ]
+}
