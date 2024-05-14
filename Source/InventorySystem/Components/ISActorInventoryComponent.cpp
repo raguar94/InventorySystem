@@ -162,7 +162,7 @@ void UISActorInventoryComponent::CraftItem(FGameplayTag itemTag)
 				RemoveItemFromInventory(recipeElement.Key, recipeElement.Value);
 			}
 
-			AddItemToInventory(itemTag, 1.f);
+			AddItemToInventory(itemTag, itemRecipe.CraftedQuantity);
 		}
 	}
 }
